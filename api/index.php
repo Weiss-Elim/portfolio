@@ -1,6 +1,6 @@
 <?php
 // index.php
-require_once __DIR__ . '/config/database.php';
+require_once __DIR__ . '/../config/database.php';
 
 // Initialize DB connection safely
 $db = null;
@@ -64,8 +64,8 @@ if ($db) {
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/css/style.css">
-  <link rel="stylesheet" href="assets/css/responsive.css">
+  <link rel="stylesheet" href="../assets/css/style.css">
+  <link rel="stylesheet" href="../assets/css/responsive.css">
 </head>
 <body>
 
@@ -78,7 +78,7 @@ if ($db) {
         <div class="start-header">
           <div class="user-profile">
             <div class="avatar-wrapper">
-              <img src="assets/images/profile.jpg" 
+              <img src="../assets/images/profile.jpg" 
                    alt="Sean John A. Duque" 
                    class="user-avatar"
                    onerror="this.src='https://via.placeholder.com/150x150/151B23/3B82F6?text=Sean+Duque'">
@@ -184,7 +184,7 @@ if ($db) {
             </div>
 
             <div class="resume-launch">
-              <a href="assets/documents/resume.pdf" target="_blank" class="btn-start-action">
+              <a href="../assets/documents/resume.pdf" target="_blank" class="btn-start-action">
                 <span class="icon">📥</span> Download Resume.pdf
               </a>
             </div>
