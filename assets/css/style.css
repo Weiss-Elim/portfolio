@@ -1,0 +1,1274 @@
+:root {
+  --bg-primary: #0B0F14;
+  --bg-secondary: #111827;
+  --bg-card: #151B23;
+  --text-primary: #F8FAFC;
+  --text-muted: #94A3B8;
+  --accent-color: #3B82F6;
+  --border-color: #263241;
+  --font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-family);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Base Container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 0;
+}
+
+/* Grid Layout Utilities */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+/* Cards */
+.card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--accent-color);
+}
+
+/* ==========================================
+   FILE EXPLORER WINDOW THEME
+   ========================================== */
+
+/* Outer Window Container for Sections */
+.explorer-window {
+  background-color: #111827;
+  border: 1px solid #263241;
+  border-radius: 8px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  margin-bottom: 3rem;
+  overflow: hidden;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.explorer-window:hover {
+  border-color: #3B82F6;
+  box-shadow: 0 12px 35px rgba(59, 130, 246, 0.15);
+}
+
+/* Window Title Bar */
+.window-titlebar {
+  background-color: #151B23;
+  border-bottom: 1px solid #263241;
+  padding: 0.6rem 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  user-select: none;
+}
+
+.window-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  font-family: 'Space Mono', monospace, sans-serif;
+  color: #94A3B8;
+  font-weight: 500;
+}
+
+.window-title .icon {
+  font-size: 1rem;
+}
+
+/* Window Control Buttons (Minimize, Maximize, Close) */
+.window-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.win-btn {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.win-btn.close { background-color: #EF4444; }
+.win-btn.minimize { background-color: #F59E0B; }
+.win-btn.maximize { background-color: #10B981; }
+
+/* Address Bar / Path Breadcrumb Bar */
+.window-addressbar {
+  background-color: #0B0F14;
+  border-bottom: 1px solid #263241;
+  padding: 0.4rem 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: #64748B;
+}
+
+.address-path {
+  background-color: #151B23;
+  border: 1px solid #263241;
+  border-radius: 4px;
+  padding: 0.2rem 0.6rem;
+  width: 100%;
+  color: #3B82F6;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Explorer Body Grid (Sidebar + Main Content Area) */
+.window-body {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  min-height: 380px;
+}
+
+/* Explorer Sidebar */
+.explorer-sidebar {
+  background-color: #0E131F;
+  border-right: 1px solid #263241;
+  padding: 1rem 0.75rem;
+  font-size: 0.85rem;
+}
+
+.sidebar-heading {
+  text-transform: uppercase;
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  color: #64748B;
+  margin-bottom: 0.5rem;
+  padding-left: 0.5rem;
+}
+
+.sidebar-tree {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sidebar-tree li a {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem 0.5rem;
+  color: #94A3B8;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.sidebar-tree li a:hover,
+.sidebar-tree li.active a {
+  background-color: rgba(59, 130, 246, 0.15);
+  color: #3B82F6;
+}
+
+/* Explorer Content Canvas */
+.explorer-content {
+  padding: 1.5rem;
+  background-color: #111827;
+  overflow-y: auto;
+}
+
+/* Mobile Responsive adjustment */
+@media (max-width: 768px) {
+  .window-body {
+    grid-template-columns: 1fr;
+  }
+  
+  .explorer-sidebar {
+    display: none; /* Hide sidebar tree on small mobile views to prioritize content */
+  }
+}
+
+/* ==========================================
+   TASKBAR / OS-THEMED FOOTER
+   ========================================== */
+
+.taskbar-footer {
+  background-color: #151B23;
+  border-top: 1px solid #263241;
+  padding: 0.8rem 0;
+  margin-top: 4rem;
+  font-family: 'Space Mono', monospace, sans-serif;
+  font-size: 0.85rem;
+  color: #94A3B8;
+  position: relative;
+  z-index: 100;
+}
+
+.taskbar-container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+/* System Status Indicator */
+.taskbar-status {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+}
+
+.status-indicator.online {
+  background-color: #10B981;
+  box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+}
+
+.taskbar-brand {
+  color: #F8FAFC;
+  font-weight: 600;
+}
+
+.taskbar-divider {
+  color: #263241;
+}
+
+.taskbar-role {
+  color: #64748B;
+  font-size: 0.8rem;
+}
+
+/* Taskbar Quick Links */
+.taskbar-links {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.taskbar-item {
+  background-color: #0B0F14;
+  border: 1px solid #263241;
+  border-radius: 4px;
+  padding: 0.3rem 0.75rem;
+  color: #94A3B8;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  transition: all 0.2s ease;
+}
+
+.taskbar-item:hover {
+  background-color: #111827;
+  border-color: #3B82F6;
+  color: #3B82F6;
+  transform: translateY(-2px);
+}
+
+/* System Controls & Copyright */
+.taskbar-system {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.copyright {
+  font-size: 0.75rem;
+  color: #64748B;
+}
+
+.back-to-top-btn {
+  background-color: #0B0F14;
+  border: 1px solid #263241;
+  color: #3B82F6;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 0.75rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.back-to-top-btn:hover {
+  background-color: #3B82F6;
+  color: #FFFFFF;
+  border-color: #3B82F6;
+}
+
+/* Mobile Responsive Taskbar Layout */
+@media (max-width: 768px) {
+  .taskbar-container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 1rem;
+  }
+
+  .taskbar-role {
+    display: none; /* Hide secondary title on narrow screens */
+  }
+
+  .taskbar-system {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
+
+/* ==========================================
+   PROJECTS FILE EXPLORER THUMBNAILS & MODAL
+   ========================================== */
+
+.explorer-subtext {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: #64748B;
+  margin-bottom: 1.5rem;
+}
+
+/* File Grid Container */
+.file-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+}
+
+/* Individual File Item */
+.file-item {
+  background-color: #151B23;
+  border: 1px solid #263241;
+  border-radius: 6px;
+  padding: 0.6rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.file-item:hover {
+  background-color: #1c2430;
+  border-color: #3B82F6;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+}
+
+.file-thumbnail {
+  position: relative;
+  width: 100%;
+  height: 140px;
+  background-color: #0B0F14;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid #263241;
+}
+
+.file-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.file-item:hover .file-thumbnail img {
+  transform: scale(1.05);
+}
+
+.file-badge {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  background-color: rgba(11, 15, 20, 0.85);
+  color: #3B82F6;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.65rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 3px;
+  border: 1px solid #263241;
+}
+
+.file-details {
+  margin-top: 0.6rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.file-name {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: #F8FAFC;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.file-meta {
+  font-size: 0.725rem;
+  color: #64748B;
+  margin-top: 0.1rem;
+}
+
+/* Modal Window Overlay */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.25s ease;
+  padding: 1rem;
+}
+
+.modal-overlay.active {
+  opacity: 1;
+  visibility: visible;
+}
+
+.modal-window {
+  width: 100%;
+  max-width: 900px;
+  margin-bottom: 0;
+  transform: scale(0.95);
+  transition: transform 0.25s ease;
+}
+
+.modal-overlay.active .modal-window {
+  transform: scale(1);
+}
+
+.modal-body {
+  padding: 1.5rem;
+  background-color: #111827;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.modal-image-container {
+  width: 100%;
+  max-height: 380px;
+  background-color: #0B0F14;
+  border: 1px solid #263241;
+  border-radius: 6px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-image-container img {
+  width: 100%;
+  height: 100%;
+  max-height: 380px;
+  object-fit: contain;
+}
+
+.modal-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.modal-details h2 {
+  font-size: 1.5rem;
+  color: #F8FAFC;
+}
+
+.modal-details p {
+  font-size: 0.9rem;
+  color: #94A3B8;
+  line-height: 1.5;
+}
+
+.modal-tech-stack {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: #64748B;
+  background-color: #0B0F14;
+  padding: 0.75rem;
+  border-radius: 4px;
+  border: 1px solid #263241;
+}
+
+.modal-tech-stack p {
+  color: #10B981;
+  margin-top: 0.25rem;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 0.75rem;
+  margin-top: 0.5rem;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 768px) {
+  .modal-body {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   WINDOWS START MENU HERO THEME
+   ========================================== */
+
+.hero-start-container {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+}
+
+/* Outer Start Menu Window */
+.start-menu-window {
+  background-color: #111827;
+  border: 1px solid #263241;
+  border-radius: 12px;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  max-width: 960px;
+  margin: 0 auto;
+  font-family: 'Space Mono', monospace, sans-serif;
+}
+
+/* Header Section */
+.start-header {
+  background-color: #151B23;
+  border-bottom: 1px solid #263241;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.user-profile {
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+}
+
+.avatar-wrapper {
+  position: relative;
+}
+
+.user-avatar {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #3B82F6;
+}
+
+.avatar-wrapper .status-indicator {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 14px;
+  height: 14px;
+  border: 2px solid #151B23;
+}
+
+.user-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #F8FAFC;
+  margin-bottom: 0.2rem;
+}
+
+.user-title {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  color: #3B82F6;
+  font-weight: 500;
+}
+
+.system-path {
+  font-size: 0.725rem;
+  color: #64748B;
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.power-status {
+  font-size: 0.8rem;
+  color: #10B981;
+  background-color: #0B0F14;
+  padding: 0.4rem 0.8rem;
+  border-radius: 6px;
+  border: 1px solid #263241;
+}
+
+/* Start Menu Content Body */
+.start-body {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 1.5rem;
+  padding: 1.5rem 2rem;
+  background-color: #0B0F14;
+}
+
+.section-label {
+  font-size: 0.75rem;
+  color: #64748B;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+/* Pinned Apps Grid */
+.pinned-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0.85rem;
+}
+
+.pinned-app {
+  background-color: #151B23;
+  border: 1px solid #263241;
+  border-radius: 8px;
+  padding: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.pinned-app:hover {
+  background-color: #1c2430;
+  border-color: #3B82F6;
+  transform: translateY(-2px);
+}
+
+.app-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  background-color: #0B0F14;
+  border: 1px solid #263241;
+  flex-shrink: 0;
+}
+
+.app-info {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.app-name {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #F8FAFC;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.app-desc {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.725rem;
+  color: #64748B;
+  margin-top: 0.1rem;
+}
+
+/* Right Sidebar Specs */
+.start-sidebar {
+  background-color: #151B23;
+  border: 1px solid #263241;
+  padding: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.sidebar-title {
+  font-size: 0.825rem;
+  color: #94A3B8;
+  border-bottom: 1px solid #263241;
+  padding-bottom: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.spec-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.spec-key {
+  font-size: 0.7rem;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+.spec-val {
+  font-size: 0.8rem;
+  color: #10B981;
+  font-weight: 500;
+}
+
+.resume-launch {
+  margin-top: 1.5rem;
+}
+
+.btn-start-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: #3B82F6;
+  color: #FFFFFF;
+  padding: 0.6rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-start-action:hover {
+  background-color: #2563EB;
+  box-shadow: 0 0 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Footer Control Bar */
+.start-footer {
+  background-color: #151B23;
+  border-top: 1px solid #263241;
+  padding: 0.85rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: #64748B;
+}
+
+.footer-btn {
+  color: #3B82F6;
+  text-decoration: none;
+  font-weight: 600;
+  transition: color 0.2s ease;
+}
+
+.footer-btn:hover {
+  color: #60A5FA;
+}
+
+/* Mobile Responsive */
+@media (max-width: 768px) {
+  .start-body {
+    grid-template-columns: 1fr;
+  }
+
+  .pinned-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .start-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ==========================================
+   CERTIFICATIONS SECTION THEME
+   ========================================== */
+
+.cert-grid {
+  gap: 1.25rem;
+}
+
+.cert-card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1rem;
+  background-color: #151B23;
+  border: 1px solid #263241;
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.cert-card:hover {
+  border-color: #3B82F6;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(59, 130, 246, 0.15);
+}
+
+.cert-badge {
+  width: 50px;
+  height: 50px;
+  background-color: #0B0F14;
+  border: 1px solid #263241;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.cert-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.cert-badge .icon-large {
+  font-size: 1.5rem;
+}
+
+.cert-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  width: 100%;
+}
+
+.cert-date {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.725rem;
+  color: #10B981;
+}
+
+.cert-body h3 {
+  font-size: 1rem;
+  color: #F8FAFC;
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+.cert-body h4 {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  font-weight: 400;
+}
+
+.cert-id {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: #64748B;
+  margin-top: 0.25rem;
+  display: block;
+}
+
+.cert-action {
+  margin-top: 0.85rem;
+}
+
+.btn-accent {
+  background-color: #10B981;
+  color: #0B0F14;
+  font-weight: 600;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  font-size: 0.75rem;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.2s ease;
+}
+
+.btn-accent:hover {
+  background-color: #059669;
+  color: #FFFFFF;
+}
+
+/* ==========================================
+   COMPACT SKILLS GRID & TAGS
+   ========================================== */
+
+/* Multi-column grid for categories */
+.skills-category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.25rem;
+  align-items: start;
+}
+
+.skill-category-card {
+  background-color: #151B23;
+  border: 1px solid #263241;
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: border-color 0.2s ease, transform 0.2s ease;
+}
+
+.skill-category-card:hover {
+  border-color: #3B82F6;
+  transform: translateY(-2px);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border-bottom: 1px solid #263241;
+  padding-bottom: 0.6rem;
+  margin-bottom: 1rem;
+}
+
+.category-header h3 {
+  font-size: 1rem;
+  color: #F8FAFC;
+  font-weight: 600;
+}
+
+/* Horizontal Chip Wrapping */
+.skills-flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.skill-tag {
+  background-color: #0B0F14;
+  border: 1px solid #263241;
+  color: #94A3B8;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.775rem;
+  padding: 0.35rem 0.75rem;
+  border-radius: 4px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  transition: all 0.2s ease;
+  user-select: none;
+}
+
+.skill-tag:hover {
+  background-color: rgba(59, 130, 246, 0.15);
+  border-color: #3B82F6;
+  color: #3B82F6;
+  transform: translateY(-1px);
+}
+
+/* Mobile responsive single column fallback */
+@media (max-width: 640px) {
+  .skills-category-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ==========================================
+   TIMELINE LOG / WORK EXPERIENCE THEME
+   ========================================== */
+
+.timeline-log-wrapper {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-top: 1rem;
+  border-left: 2px solid #263241; /* Vertical git branch line */
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.log-entry {
+  position: relative;
+  background-color: #151B23;
+  border: 1px solid #263241;
+  border-radius: 8px;
+  padding: 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.log-entry:hover {
+  border-color: #3B82F6;
+  transform: translateX(4px);
+}
+
+/* Branch Circle Node on Timeline Line */
+.log-node {
+  position: absolute;
+  left: -1.95rem;
+  top: 1.5rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background-color: #0B0F14;
+  border: 2px solid #3B82F6;
+  box-shadow: 0 0 8px rgba(59, 130, 246, 0.5);
+}
+
+.log-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+  border-bottom: 1px dashed #263241;
+  padding-bottom: 0.75rem;
+  margin-bottom: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.log-title-group h3 {
+  font-size: 1.1rem;
+  color: #F8FAFC;
+  font-weight: 600;
+}
+
+.log-title-group h4 {
+  font-size: 0.85rem;
+  color: #94A3B8;
+  font-weight: 400;
+  margin-top: 0.2rem;
+}
+
+.log-title-group .loc {
+  color: #64748B;
+}
+
+.log-date-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: #10B981;
+  background-color: #0B0F14;
+  border: 1px solid #263241;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  white-space: nowrap;
+}
+
+.log-body p {
+  font-size: 0.875rem;
+  color: #94A3B8;
+  line-height: 1.5;
+}
+
+.log-bullets {
+  padding-left: 1.2rem;
+  font-size: 0.875rem;
+  color: #94A3B8;
+  line-height: 1.6;
+}
+
+.log-bullets li {
+  margin-bottom: 0.3rem;
+}
+
+/* Tech Chips Inside Log Entry */
+.log-tech-stack {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin-top: 0.85rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid rgba(38, 50, 65, 0.5);
+}
+
+.tech-label {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.725rem;
+  color: #64748B;
+  margin-right: 0.25rem;
+}
+
+.tech-chip {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.7rem;
+  color: #3B82F6;
+  background-color: #0B0F14;
+  border: 1px solid #263241;
+  padding: 0.15rem 0.5rem;
+  border-radius: 3px;
+}
+
+@media (max-width: 640px) {
+  .log-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+/* ==========================================
+   ABOUT ME / SYSTEM PROPERTIES THEME
+   ========================================== */
+
+.about-sys-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+/* Header Stat Badges */
+.sys-metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+}
+
+.metric-card {
+  background-color: #151B23;
+  border: 1px solid #263241;
+  padding: 0.85rem 1rem;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.metric-icon {
+  font-size: 1.5rem;
+}
+
+.metric-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.metric-val {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #3B82F6;
+}
+
+.metric-label {
+  font-size: 0.725rem;
+  color: #64748B;
+  text-transform: uppercase;
+}
+
+/* Diagnostic Grid */
+.about-sys-grid {
+  align-items: stretch;
+  gap: 1.25rem;
+}
+
+.card-sys-header {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.8rem;
+  color: #64748B;
+  border-bottom: 1px solid #263241;
+  padding-bottom: 0.5rem;
+  margin-bottom: 0.85rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.bio-text {
+  font-size: 0.875rem;
+  color: #94A3B8;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+.cap-title {
+  font-family: 'Space Mono', monospace;
+  font-size: 0.75rem;
+  color: #F8FAFC;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.cap-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-size: 0.825rem;
+  color: #94A3B8;
+}
+
+.cap-list li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.35rem;
+}
+
+.cap-list li span {
+  color: #10B981;
+  font-weight: bold;
+}
+
+/* Specification Table */
+.spec-table {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.spec-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.4rem 0.6rem;
+  background-color: #0B0F14;
+  border: 1px solid #263241;
+  border-radius: 4px;
+  font-family: 'Space Mono', monospace;
+  font-size: 0.775rem;
+}
+
+.spec-key {
+  color: #64748B;
+}
+
+.spec-val {
+  color: #F8FAFC;
+  font-weight: 500;
+}
+
+.spec-val.highlight-green {
+  color: #10B981;
+}
+
+/* Mobile responsive fallback */
+@media (max-width: 768px) {
+  .sys-metrics-grid {
+    grid-template-columns: 1fr;
+  }
+}
