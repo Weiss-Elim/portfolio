@@ -80,8 +80,7 @@ if ($db) {
             <div class="avatar-wrapper">
               <img src="../assets/images/profile.jpg" 
                    alt="Sean John A. Duque" 
-                   class="user-avatar"
-                   onerror="this.src='https://via.placeholder.com/150x150/151B23/3B82F6?text=Sean+Duque'">
+                   class="user-avatar">
               <span class="status-indicator online" title="System Status: Online"></span>
             </div>
             <div class="user-info">
@@ -179,7 +178,7 @@ if ($db) {
               </div>
               <div class="spec-item">
                 <span class="spec-key">Location</span>
-                <span class="spec-val">United Arab Emirates</span>
+                <span class="spec-val">Abu Dhabi, United Arab Emirates</span>
               </div>
             </div>
 
@@ -198,7 +197,7 @@ if ($db) {
             <span class="icon">🛡️</span> Administrator Session
           </div>
           <div class="footer-actions">
-            <a href="#contact" class="footer-btn">
+            <a href="https://www.linkedin.com/in/sean-john-duque" class="footer-btn">
               <span class="icon">💬</span> Let's Connect
             </a>
           </div>
@@ -325,7 +324,7 @@ if ($db) {
                     </div>
                     <div class="spec-row">
                       <span class="spec-key">Location</span>
-                      <span class="spec-val">United Arab Emirates</span>
+                      <span class="spec-val">Abu Dhabi, United Arab Emirates</span>
                     </div>
                     <div class="spec-row">
                       <span class="spec-key">Deployment</span>
@@ -511,13 +510,12 @@ if ($db) {
                        data-category="<?php echo htmlspecialchars($project['category']); ?>"
                        data-summary="<?php echo htmlspecialchars($project['summary']); ?>"
                        data-tech="<?php echo htmlspecialchars($project['technologies']); ?>"
-                       data-img="assets/images/projects/<?php echo htmlspecialchars($project['thumbnail']); ?>"
+                       data-img="../assets/images/projects/<?php echo htmlspecialchars($project['thumbnail']); ?>"
                        data-github="<?php echo htmlspecialchars($project['github_url'] ?? ''); ?>"
                        data-demo="<?php echo htmlspecialchars($project['demo_url'] ?? ''); ?>">
                     <div class="file-thumbnail">
-                      <img src="assets/images/projects/<?php echo htmlspecialchars($project['thumbnail']); ?>" 
-                           alt="<?php echo htmlspecialchars($project['title']); ?>"
-                           onerror="this.src='https://via.placeholder.com/400x250/151B23/94A3B8?text=Project+Preview'">
+                      <img src="../assets/images/projects/<?php echo htmlspecialchars($project['thumbnail']); ?>" 
+                           alt="<?php echo htmlspecialchars($project['title']); ?>">
                       <span class="file-badge">IMG</span>
                     </div>
                     <div class="file-details">
@@ -527,60 +525,6 @@ if ($db) {
                   </div>
                 <?php endforeach; ?>
               <?php else: ?>
-                <!-- Static Fallback File Cards -->
-                <div class="file-item" 
-                     data-title="ILAK Beauty Salon System"
-                     data-category="Business Systems"
-                     data-summary="Complete management platform handling salon appointments, inventory tracking, and POS reporting."
-                     data-tech="Laravel, PHP, MySQL, Tailwind CSS"
-                     data-img="assets/images/CDC-JOBSPORTAL.png"
-                     data-github="https://github.com/seanduque"
-                     data-demo="">
-                  <div class="file-thumbnail">
-                    <img src="assets/images/CDC-JOBSPORTAL.png" alt="ILAK System">
-                    <span class="file-badge">IMG</span>
-                  </div>
-                  <div class="file-details">
-                    <span class="file-name">ilak_salon_system.png</span>
-                    <span class="file-meta">Business Systems</span>
-                  </div>
-                </div>
-
-                <div class="file-item" 
-                     data-title="Smart Digital Bulletin Board"
-                     data-category="Web & Hardware"
-                     data-summary="IoT web platform interfacing with digital signage displays to update announcements dynamically."
-                     data-tech="PHP, MySQL, JavaScript, REST API"
-                     data-img="https://via.placeholder.com/800x500/151B23/10B981?text=Digital+Bulletin+Board"
-                     data-github="https://github.com/seanduque"
-                     data-demo="">
-                  <div class="file-thumbnail">
-                    <img src="https://via.placeholder.com/400x250/151B23/94A3B8?text=Digital+Bulletin+Board" alt="Digital Bulletin Board">
-                    <span class="file-badge">IMG</span>
-                  </div>
-                  <div class="file-details">
-                    <span class="file-name">digital_bulletin_board.png</span>
-                    <span class="file-meta">Web & Hardware</span>
-                  </div>
-                </div>
-
-                <div class="file-item" 
-                     data-title="CDC-HRIS Enterprise Portal"
-                     data-category="Enterprise System"
-                     data-summary="Human Resources Information System managing normalized backend schemas, payroll, and employee records."
-                     data-tech="PHP, MySQL, Schema Normalization"
-                     data-img="https://via.placeholder.com/800x500/151B23/F59E0B?text=CDC-HRIS+Portal"
-                     data-github="https://github.com/seanduque"
-                     data-demo="">
-                  <div class="file-thumbnail">
-                    <img src="https://via.placeholder.com/400x250/151B23/94A3B8?text=CDC-HRIS" alt="CDC-HRIS">
-                    <span class="file-badge">IMG</span>
-                  </div>
-                  <div class="file-details">
-                    <span class="file-name">cdc_hris_portal.png</span>
-                    <span class="file-meta">Enterprise System</span>
-                  </div>
-                </div>
               <?php endif; ?>
             </div>
           </div>
@@ -665,55 +609,6 @@ if ($db) {
                   </div>
                 <?php endforeach; ?>
               <?php else: ?>
-                <!-- Fallback Timeline Entries -->
-                <div class="log-entry card">
-                  <div class="log-node"></div>
-                  <div class="log-header">
-                    <div class="log-title-group">
-                      <h3>Junior Web Developer</h3>
-                      <h4>Transcend Enterprise Solutions • <span class="loc">Angono, Rizal, Philippines</span></h4>
-                    </div>
-                    <span class="log-date-badge">Feb 2026 – May 2026</span>
-                  </div>
-                  <div class="log-body">
-                    <ul class="log-bullets">
-                      <li>Contributed to frontend and backend web development using Laravel, Livewire, Alpine.js, and Tailwind CSS.</li>
-                      <li>Maintained multi-branch workflows and GitHub repository management for digital public systems.</li>
-                    </ul>
-                    <div class="log-tech-stack">
-                      <span class="tech-label">Stack:</span>
-                      <span class="tech-chip">Laravel</span>
-                      <span class="tech-chip">PHP</span>
-                      <span class="tech-chip">Livewire</span>
-                      <span class="tech-chip">Tailwind CSS</span>
-                      <span class="tech-chip">Git</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="log-entry card">
-                  <div class="log-node"></div>
-                  <div class="log-header">
-                    <div class="log-title-group">
-                      <h3>IT Specialist</h3>
-                      <h4>ILAK Beauty Salon • <span class="loc">Taytay, Rizal, Philippines</span></h4>
-                    </div>
-                    <span class="log-date-badge">Mar 2024 – Feb 2026</span>
-                  </div>
-                  <div class="log-body">
-                    <ul class="log-bullets">
-                      <li>Engineered custom inventory, sales, and booking business management web systems.</li>
-                      <li>Handled database design, normalized schema development, and operational technical support.</li>
-                    </ul>
-                    <div class="log-tech-stack">
-                      <span class="tech-label">Stack:</span>
-                      <span class="tech-chip">PHP</span>
-                      <span class="tech-chip">MySQL</span>
-                      <span class="tech-chip">JavaScript</span>
-                      <span class="tech-chip">Database Design</span>
-                    </div>
-                  </div>
-                </div>
               <?php endif; ?>
             </div>
           </div>
@@ -787,52 +682,6 @@ if ($db) {
                   </div>
                 <?php endforeach; ?>
               <?php else: ?>
-                <!-- Fallback Academic Entries -->
-                <div class="log-entry card">
-                  <div class="log-node"></div>
-                  <div class="log-header">
-                    <div class="log-title-group">
-                      <h3>Bachelor of Science in Information Technology</h3>
-                      <h4>Our Lady of Fatima University • <span class="loc">Valenzuela City, Philippines</span></h4>
-                    </div>
-                    <span class="log-date-badge">Graduated</span>
-                  </div>
-                  <div class="log-body">
-                    <ul class="log-bullets">
-                      <li>Specialized in Full-Stack Web Development, Relational Database Management (MySQL), and Software Engineering.</li>
-                      <li>Completed coursework in iOS Development (Objective-C/UIKit) and Computer Networking.</li>
-                    </ul>
-                    <div class="log-tech-stack">
-                      <span class="tech-label">Focus Areas:</span>
-                      <span class="tech-chip">Web Development</span>
-                      <span class="tech-chip">Database Management</span>
-                      <span class="tech-chip">Software Engineering</span>
-                      <span class="tech-chip">Networking</span>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="log-entry card">
-                  <div class="log-node"></div>
-                  <div class="log-header">
-                    <div class="log-title-group">
-                      <h3>IT Internship (500 Hours Requirement)</h3>
-                      <h4>Transcend Enterprise Solutions • <span class="loc">Angono, Rizal, Philippines</span></h4>
-                    </div>
-                    <span class="log-date-badge">Completed</span>
-                  </div>
-                  <div class="log-body">
-                    <ul class="log-bullets">
-                      <li>Applied web development standards, database normalization, and frontend user interface implementation for digital systems.</li>
-                    </ul>
-                    <div class="log-tech-stack">
-                      <span class="tech-label">Focus Areas:</span>
-                      <span class="tech-chip">Systems Development</span>
-                      <span class="tech-chip">Database Normalization</span>
-                      <span class="tech-chip">Version Control</span>
-                    </div>
-                  </div>
-                </div>
               <?php endif; ?>
             </div>
           </div>
@@ -892,11 +741,10 @@ if ($db) {
                        data-date="<?php echo date('M Y', strtotime($cert['issue_date'])); ?>"
                        data-id="<?php echo htmlspecialchars($cert['credential_id'] ?? 'N/A'); ?>"
                        data-url="<?php echo htmlspecialchars($cert['credential_url'] ?? ''); ?>"
-                       data-img="assets/images/certificates/<?php echo htmlspecialchars($cert['badge_image']); ?>">
+                       data-img="../assets/images/certificates/<?php echo htmlspecialchars($cert['badge_image']); ?>">
                     <div class="file-thumbnail cert-thumbnail">
-                      <img src="assets/images/certificates/<?php echo htmlspecialchars($cert['badge_image']); ?>" 
-                           alt="<?php echo htmlspecialchars($cert['title']); ?>"
-                           onerror="this.src='https://via.placeholder.com/300x200/151B23/10B981?text=CERTIFICATE'">
+                      <img src="../assets/images/certificates/<?php echo htmlspecialchars($cert['badge_image']); ?>" 
+                           alt="<?php echo htmlspecialchars($cert['title']); ?>">
                       <span class="file-badge">PFX</span>
                     </div>
                     <div class="file-details">
@@ -906,57 +754,6 @@ if ($db) {
                   </div>
                 <?php endforeach; ?>
               <?php else: ?>
-                <!-- Static Fallback Clickable Items -->
-                <div class="file-item cert-item"
-                     data-title="Information Technology Training Certificate"
-                     data-issuer="OLFU / Professional Institute"
-                     data-date="Apr 2026"
-                     data-id="ITEL414-2026"
-                     data-url=""
-                     data-img="https://via.placeholder.com/600x400/151B23/3B82F6?text=IT+Training+Certificate">
-                  <div class="file-thumbnail cert-thumbnail">
-                    <img src="https://via.placeholder.com/300x200/151B23/3B82F6?text=IT+Certificate" alt="IT Certificate">
-                    <span class="file-badge">PFX</span>
-                  </div>
-                  <div class="file-details">
-                    <span class="file-name">it_training_cert.pfx</span>
-                    <span class="file-meta">OLFU • 2026</span>
-                  </div>
-                </div>
-
-                <div class="file-item cert-item"
-                     data-title="500-Hour OJT Internship Certificate"
-                     data-issuer="Transcend Enterprise Solutions"
-                     data-date="May 2026"
-                     data-id="OJT-500-2026"
-                     data-url=""
-                     data-img="https://via.placeholder.com/600x400/151B23/10B981?text=OJT+Internship+Certificate">
-                  <div class="file-thumbnail cert-thumbnail">
-                    <img src="https://via.placeholder.com/300x200/151B23/10B981?text=OJT+Certificate" alt="OJT Certificate">
-                    <span class="file-badge">PFX</span>
-                  </div>
-                  <div class="file-details">
-                    <span class="file-name">ojt_internship_completion.pfx</span>
-                    <span class="file-meta">Transcend Enterprise • 2026</span>
-                  </div>
-                </div>
-
-                <div class="file-item cert-item"
-                     data-title="Networking & Systems Fundamentals"
-                     data-issuer="Cisco / Academic Network Training"
-                     data-date="Nov 2025"
-                     data-id="NET-OSI-2025"
-                     data-url=""
-                     data-img="https://via.placeholder.com/600x400/151B23/F59E0B?text=Networking+Fundamentals">
-                  <div class="file-thumbnail cert-thumbnail">
-                    <img src="https://via.placeholder.com/300x200/151B23/F59E0B?text=Networking+Cert" alt="Networking Cert">
-                    <span class="file-badge">PFX</span>
-                  </div>
-                  <div class="file-details">
-                    <span class="file-name">networking_fundamentals.pfx</span>
-                    <span class="file-meta">Cisco • 2025</span>
-                  </div>
-                </div>
               <?php endif; ?>
             </div>
           </div>
@@ -966,5 +763,5 @@ if ($db) {
 
 <?php 
 // Include modular footer
-require_once __DIR__ . '/includes/footer.php'; 
+require_once __DIR__ . '/../includes/footer.php'; 
 ?>

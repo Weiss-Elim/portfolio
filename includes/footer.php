@@ -17,13 +17,13 @@
 
       <!-- Quick Launch / Social Links -->
       <div class="taskbar-links">
-        <a href="https://github.com/seanduque" target="_blank" rel="noopener noreferrer" class="taskbar-item">
+        <a href="https://github.com/Weiss-Elim" target="_blank" rel="noopener noreferrer" class="taskbar-item">
           <span class="icon">💻</span> GitHub
         </a>
-        <a href="https://linkedin.com/in/seanduque" target="_blank" rel="noopener noreferrer" class="taskbar-item">
+        <a href="https://www.linkedin.com/in/sean-john-duque" target="_blank" rel="noopener noreferrer" class="taskbar-item">
           <span class="icon">💼</span> LinkedIn
         </a>
-        <a href="mailto:seanjohn.duque@gmail.com" class="taskbar-item">
+        <a href="mailto:onyok404@gmail.com" class="taskbar-item">
           <span class="icon">✉️</span> Email
         </a>
       </div>
@@ -40,7 +40,7 @@
   </footer>
 
   <!-- Scripts -->
-  <script src="assets/js/main.js"></script>
+  <script src="../assets/js/main.js"></script>
 
   <!-- File Explorer Image Viewer Modal -->
   <div id="image-viewer-modal" class="modal-overlay">
